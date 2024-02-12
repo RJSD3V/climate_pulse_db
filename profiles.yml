@@ -1,0 +1,15 @@
+climate_works_dbt:
+  target: cw_dev
+  outputs:
+    cw_dev:
+      type: duckdb
+      schema: dev_sode
+      path: './dev_database.duckdb'
+    cw_md_dev:
+      type: duckdb
+      schema: dev_sode
+      path: "md:climate_works?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+    cw_md_prod:
+      type: duckdb
+      schema: prod_sode
+      path: "md:climate_works?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"

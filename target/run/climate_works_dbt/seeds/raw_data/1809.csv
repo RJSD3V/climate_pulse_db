@@ -1,0 +1,13 @@
+
+    
+    
+    
+    create table "dev_database"."dev_sode"."1809" ("ID" text,"DATE" integer,"ELEMENT" text,"DATA_VALUE" integer,"M_FLAG" integer,"Q_FLAG" text,"S_FLAG" text,"OBS_TIME" integer)
+  ;
+    -- dbt seed --
+    
+          COPY "dev_database"."dev_sode"."1809" FROM 'D:\data_analytics_projects\climate_works\analytics\climate_works_dbt\seeds\raw_data\1809.csv' (FORMAT CSV, HEADER TRUE, DELIMITER ',')
+        
+
+;
+  

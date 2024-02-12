@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: cw_noah_ghcn
+    description: "NOAA GHCN Daily Data.All Vertical Tables"
+    database: climate_works
+    schema: dev_sode
+
+    config:
+      enabled: true
+    tables:
+      - name: noaa_ghcn_1750
+        identifier: noaa_ghcn_1750
+      - name: noaa_ghcn_1751
+        identifier: noaa_ghcn_1751
