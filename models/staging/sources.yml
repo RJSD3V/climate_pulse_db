@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: noaa_ghcn
+    database: dev_database
+    schema: dev_sode
+    tables:
+      - name: noaa_ghcn_2022
+        identifier: noaa_ghcn_2022
+      - name: noaa_ghcn_2023
+        identifier: noaa_ghcn_2023

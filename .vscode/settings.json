@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "DuckDB",
+            "name": "cw_duckdb",
+            "group": "Duckdb",
+            "database": "${workspaceFolder:climate_works_dbt}/dev_database.duckdb"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+    "sqlfluff.excludeRules": [
+        null,
+        null
+    ],
+    "dbt.queryLimit": 500
+}
