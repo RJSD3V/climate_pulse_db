@@ -4,7 +4,7 @@
     
 
     create  table
-      "climate_works"."dev_sode"."my_first_dbt_model__dbt_tmp"
+      "dev_database"."dev_sode"."my_first_dbt_model__dbt_tmp"
   
     as (
       /*

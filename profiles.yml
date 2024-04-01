@@ -3,6 +3,7 @@ climate_works_dbt:
   outputs:
     cw_dev:
       type: duckdb
+      database: dev_database
       schema: dev_sode
       path: './dev_database.duckdb'
     cw_md_dev:

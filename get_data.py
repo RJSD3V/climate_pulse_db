@@ -4,6 +4,7 @@ import datetime
 from io import StringIO
 import sys
 import os
+import duckdb
 
 def get_noaa_file(year):
     bucket_name = 'noaa-ghcn-pds'
@@ -24,16 +25,27 @@ def get_noaa_file(year):
             csv_string= body.read().decode('utf-8')
             print("Converting the CSV to a Pandas DataFrame")
             df= pd.read_csv(StringIO(csv_string))
+            print(df.head(5))
             print(f"Storing file as ./raw/{year}.csv")
             df.to_csv(f"./seeds/raw_data/{year}.csv",index=False)
+            # load_data_to_db(f'noaa_ghcn_{year}', df)
 
-    except:
-
+    except Exception as e:
+        print(e)
         print("Couldn't retrieve file, doesn't exist.")
 
     finally:
 
         print("Trying to Create the File Locally..")
+    
+
+
+def load_data_to_db(name, data):
+    con = duckdb.connect('./dev_database.duckdb')
+    con.sql('use schema dev_sode;')
+    # Note: duckdb.sql connects to the default in-memory database connection
+    # you can explicitly mention what db file you want to connect it to, in case you have multiple.
+    con.sql(f"CREATE TABLE {name} AS SELECT * FROM data")
 
 
 
@@ -44,10 +56,8 @@ def get_all_noaa_files(start_year, end_year):
     print("All File Retrieved!! Check your storage location")
 
 if __name__ == '__main__':
-    start = 1763
-    end = datetime.date.today().year-1
-    
-    get_all_noaa_files(start,end)
+    year = int(sys.argv[1])
+    get_noaa_file(year)
  
 
 
