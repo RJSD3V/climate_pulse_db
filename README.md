@@ -12,11 +12,14 @@ after installing duckdb you can initialize duckdb using the `duckdb` command, or
 
 Once the database file is created in your directory, you are good to go!
 
-Post that, you need to run the `get_data.py` python script that ingests the data needed for analysis from the NOAA source. The python script pulls 1 years worth of data (which is a lot, around 7GB) based on the command line argument that you provide to it. The command line argument is the year you want the data for. For example, if you want to ingest the csv data file for the year 2010, you type: 
+## The Data
+We are using the NOAA GHCN-D open source data referred [here](https://docs.opendata.aws/noaa-ghcn-pds/readme.html) to do our climate analysis and build a basic data pipeline around. 
+
+To get the data you need to run the `get_data.py` python script that ingests the data needed for analysis from the NOAA source. Data is stored in a yearlfy fashion where each file has daily readings of different metrics taken at different station locations around the world, in the form of vertical tables. The data lies in AWS S3 buckets, so needs to be ingested using the boto3 package, specific to the python implementation. The python script pulls 1 years worth of data (which is a lot, around 7GB) based on the command line argument that you provide to it. The command line argument is the year you want the data for. For example, if you want to ingest the csv data file for the year 2010, you type: 
 
  ` python get_data.py 2010`
 
- this takes a few minutes (since the file is large with millions of records) but it will download and store the file in the seeds folder (Usually reserved by dbt for csv files). In the future, the same file will include the duckdb python module and directly insert the file into your duckdb database. That is an upgrade that is a work in progress alongside a script to ingest other metadata. 
+ this takes a few minutes (since the file is large with millions of records) but it will download and store the file in the seeds folder (Usually reserved by dbt for csv files). In the future, the same file will include the duckdb python module and directly insert the file into your duckdb database. That is an upgrade that is 
 
 
 After ingesting the files, to get the files as raw tables in your duckdb database, you simply have to run the etl_noaa.sql file in duckdb using the following: 
