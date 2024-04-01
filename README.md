@@ -1,4 +1,4 @@
-# The Climatology Project
+# The Duckdb Climatology Project
 ![climatology_model](https://github.com/RJSD3V/climate_works_dbt/assets/20220544/1fe77541-9987-40f1-91b4-67a76aab30ba)
 
 ### Using the starter project
@@ -12,9 +12,55 @@ after installing duckdb you can initialize duckdb using the `duckdb` command, or
 
 Once the database file is created in your directory, you are good to go!
 
-Post that, you need to run the `etl_noaa.py` python script that ingests the data needed for analysis from the NOAA source. The python script pulls 2 years worth of data (which is a lot, around 7GB) but you can change it to add additional years you want data for. 
+Post that, you need to run the `get_data.py` python script that ingests the data needed for analysis from the NOAA source. The python script pulls 1 years worth of data (which is a lot, around 7GB) based on the command line argument that you provide to it. The command line argument is the year you want the data for. For example, if you want to ingest the csv data file for the year 2010, you type: 
 
-Post that, you can run the  
+ ` python get_data.py 2010`
+
+ this takes a few minutes (since the file is large with millions of records) but it will download and store the file in the seeds folder (Usually reserved by dbt for csv files). In the future, the same file will include the duckdb python module and directly insert the file into your duckdb database. That is an upgrade that is a work in progress alongside a script to ingest other metadata. 
+
+
+After ingesting the files, to get the files as raw tables in your duckdb database, you simply have to run the etl_noaa.sql file in duckdb using the following: 
+
+```
+duckdb dev_database.duckdb
+D create schema DEV_SODE;
+D use dev_sode
+D .read etl_noaa.sql
+100% ▕████████████████████████████████████████████████████████████▏ 
+100% ▕████████████████████████████████████████████████████████████▏ 
+D show tables;
+┌────────────────┐
+│      name      │
+│    varchar     │
+├────────────────┤
+│ noaa_ghcn_2022 │
+│ noaa_ghcn_2023 │
+└────────────────┘
+```
+
+The above commands are duckdb specific, and you can run them in order to pull the csv files into the OLAP database that is created in process using the duckdb command, create the schema and read the files using the `.read` command that executes raw SQL statements like the following: 
+
+```
+//etl_noaa.sql
+
+CREATE TABLE IF NOT EXISTS dev_sode.noaa_ghcn_2022 as SELECT * FROM read_csv('./seeds/raw_data/2022.csv' ,AUTO_DETECT=TRUE);
+
+CREATE TABLE IF NOT EXISTS dev_sode.noaa_ghcn_2023 as SELECT * FROM read_csv('./seeds/raw_data/2023.csv',AUTO_DETECT=TRUE);
+
+```
+
+Duckdb specializes in ingesting data from a variety of file formats including csv and parquet, and doing so at incredible speed. Just for context, NOAA data for each year has over 37M records each, and you could expect each file to be ingested in a matter of seconds into the in-process duckdb file. 
+
+
+
+## Running the Data processing pipeline. 
+
+The files we just ingested are vertical tables with climate based readings taken daily at different stations around the world. There are more than a dozen types of readings including Temperature, Humidity, precipitation, Snowfall , Sea level, etc. 
+
+For starters we would be ingesting basic temperature and precipitation readings, and as this project develops further, there will be more in depth analysis based on climate based use cases and ingesting other location based metadata. 
+ 
+
+
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
