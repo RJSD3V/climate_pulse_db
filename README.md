@@ -1,4 +1,5 @@
 # The Climatology Project
+![climatology_model](https://github.com/RJSD3V/climate_works_dbt/assets/20220544/1fe77541-9987-40f1-91b4-67a76aab30ba)
 
 ### Using the starter project
 
