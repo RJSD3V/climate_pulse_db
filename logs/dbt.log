@@ -19180,3 +19180,809 @@ drop table if exists "dev_database"."dev_sode"."fact_daily_climate_parameters__d
 [0m19:02:40.357931 [debug] [MainThread]: Command `dbt run` succeeded at 19:02:40.357858 after 20.03 seconds
 [0m19:02:40.358179 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102e2f690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102e2d010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102a2e2d0>]}
 [0m19:02:40.358402 [debug] [MainThread]: Flushing usage events
+[0m16:12:16.061337 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125639e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12569f010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12569f5d0>]}
+
+
+============================== 16:12:16.064783 | 316a4408-a8a5-4a1d-840c-34efc78061c6 ==============================
+[0m16:12:16.064783 [info ] [MainThread]: Running with dbt=1.7.8
+[0m16:12:16.065200 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/Users/raajassode/dev/climate_works_dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/Users/raajassode/dev/climate_works_dbt/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m16:12:16.352959 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1256dc050>]}
+[0m16:12:16.431790 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125956790>]}
+[0m16:12:16.432697 [info ] [MainThread]: Registered adapter: duckdb=1.7.0
+[0m16:12:17.027498 [debug] [MainThread]: checksum: 67f0013ca5f0bd43af9a0873dd50792fde83ef69de63b71cacd0b4ac656c52e5, vars: {}, profile: , target: , version: 1.7.8
+[0m16:12:17.052684 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:12:17.052995 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:12:17.053533 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.climate_works_dbt.example
+[0m16:12:17.057166 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12569da90>]}
+[0m16:12:17.064582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125b2ae50>]}
+[0m16:12:17.064912 [info ] [MainThread]: Found 5 models, 2 seeds, 2 sources, 0 exposures, 0 metrics, 391 macros, 0 groups, 0 semantic models
+[0m16:12:17.065137 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125611950>]}
+[0m16:12:17.066331 [info ] [MainThread]: 
+[0m16:12:17.066839 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m16:12:17.067872 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_dev_database'
+[0m16:12:17.075461 [debug] [ThreadPool]: Using duckdb connection "list_dev_database"
+[0m16:12:17.075773 [debug] [ThreadPool]: On list_dev_database: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "list_dev_database"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where catalog_name = '"dev_database"'
+    
+  
+  
+[0m16:12:17.075979 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:12:17.085930 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.087500 [debug] [ThreadPool]: On list_dev_database: Close
+[0m16:12:17.089745 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dev_database, now create_dev_database_dev_sode)
+[0m16:12:17.090223 [debug] [ThreadPool]: Creating schema "database: "dev_database"
+schema: "dev_sode"
+"
+[0m16:12:17.093723 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m16:12:17.093966 [debug] [ThreadPool]: On create_dev_database_dev_sode: BEGIN
+[0m16:12:17.094152 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:12:17.097951 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.098208 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m16:12:17.098390 [debug] [ThreadPool]: On create_dev_database_dev_sode: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "create_dev_database_dev_sode"} */
+create schema if not exists "dev_database"."dev_sode"
+[0m16:12:17.098726 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.099317 [debug] [ThreadPool]: On create_dev_database_dev_sode: COMMIT
+[0m16:12:17.099563 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m16:12:17.099787 [debug] [ThreadPool]: On create_dev_database_dev_sode: COMMIT
+[0m16:12:17.100047 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.100233 [debug] [ThreadPool]: On create_dev_database_dev_sode: Close
+[0m16:12:17.102577 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_dev_database_dev_sode, now list_dev_database_dev_sode)
+[0m16:12:17.106045 [debug] [ThreadPool]: Using duckdb connection "list_dev_database_dev_sode"
+[0m16:12:17.106258 [debug] [ThreadPool]: On list_dev_database_dev_sode: BEGIN
+[0m16:12:17.106421 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:12:17.109864 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.110072 [debug] [ThreadPool]: Using duckdb connection "list_dev_database_dev_sode"
+[0m16:12:17.110261 [debug] [ThreadPool]: On list_dev_database_dev_sode: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "list_dev_database_dev_sode"} */
+select
+      'dev_database' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where table_schema = 'dev_sode'
+    and table_catalog = 'dev_database'
+  
+[0m16:12:17.124372 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m16:12:17.128326 [debug] [ThreadPool]: On list_dev_database_dev_sode: ROLLBACK
+[0m16:12:17.129248 [debug] [ThreadPool]: Failed to rollback 'list_dev_database_dev_sode'
+[0m16:12:17.129434 [debug] [ThreadPool]: On list_dev_database_dev_sode: Close
+[0m16:12:17.131614 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1256e9610>]}
+[0m16:12:17.131908 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:12:17.132078 [debug] [MainThread]: On master: BEGIN
+[0m16:12:17.132238 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:12:17.135825 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m16:12:17.136043 [debug] [MainThread]: On master: COMMIT
+[0m16:12:17.136214 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:12:17.136375 [debug] [MainThread]: On master: COMMIT
+[0m16:12:17.136572 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m16:12:17.136740 [debug] [MainThread]: On master: Close
+[0m16:12:17.138107 [info ] [MainThread]: Concurrency: 1 threads (target='cw_dev')
+[0m16:12:17.138346 [info ] [MainThread]: 
+[0m16:12:17.143814 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.int_climate__stations
+[0m16:12:17.144267 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dev_database_dev_sode, now model.climate_works_dbt.int_climate__stations)
+[0m16:12:17.144495 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.int_climate__stations
+[0m16:12:17.148983 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.int_climate__stations"
+[0m16:12:17.150589 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.int_climate__stations (compile): 16:12:17.144626 => 16:12:17.150398
+[0m16:12:17.151219 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.int_climate__stations
+[0m16:12:17.151484 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m16:12:17.151820 [info ] [Thread-1 (]: 1 of 4 START sql table model dev_sode.stg_daily_climate_parameters_vertical_raw  [RUN]
+[0m16:12:17.152212 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.int_climate__stations, now model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw)
+[0m16:12:17.152424 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m16:12:17.154531 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:17.155305 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw (compile): 16:12:17.152546 => 16:12:17.155136
+[0m16:12:17.155565 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m16:12:17.175907 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:17.176729 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:17.176975 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: BEGIN
+[0m16:12:17.177191 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:17.181212 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:17.181526 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:17.181798 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+
+  
+    
+    
+
+    create  table
+      "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_tmp"
+  
+    as (
+      
+with source as (
+
+    SELECT
+    ID          ::varchar   as record_id,
+    DATE        ::varchar   as reading_date,
+    ELEMENT     ::varchar   as reading_type,
+    DATA_VALUE  ::numeric   as reading_value,
+    M_FLAG      ::varchar   as measurement_flag,
+    Q_FLAG      ::varchar   as quality_flag,
+    S_FLAG      ::varchar   as source_flag,
+    OBS_TIME    ::varchar   as obs_recorded_at
+
+    from "dev_database"."dev_sode"."noaa_ghcn_2022"
+
+
+    UNION ALL
+
+    SELECT
+
+    ID          ::varchar   as record_id,
+    DATE        ::varchar   as reading_date,
+    ELEMENT     ::varchar   as reading_type,
+    DATA_VALUE  ::numeric   as reading_value,
+    M_FLAG      ::varchar   as measurement_flag,
+    Q_FLAG      ::varchar   as quality_flag,
+    S_FLAG      ::varchar   as source_flag,
+    OBS_TIME    ::varchar   as obs_recorded_at
+
+    from "dev_database"."dev_sode"."noaa_ghcn_2023"
+)
+
+select * from source
+    );
+  
+  
+[0m16:12:24.009198 [debug] [Thread-1 (]: SQL status: OK in 7.0 seconds
+[0m16:12:24.014761 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:24.015030 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+alter table "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_tmp" rename to "stg_daily_climate_parameters_vertical_raw"
+[0m16:12:24.015841 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:24.026336 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: COMMIT
+[0m16:12:24.026598 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:24.026812 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: COMMIT
+[0m16:12:32.635749 [debug] [Thread-1 (]: SQL status: OK in 9.0 seconds
+[0m16:12:32.639239 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m16:12:32.639504 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+drop table if exists "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_backup" cascade
+[0m16:12:32.640131 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.641349 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw (execute): 16:12:17.155708 => 16:12:32.641099
+[0m16:12:32.641632 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: Close
+[0m16:12:32.882196 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125bb7b50>]}
+[0m16:12:32.882956 [info ] [Thread-1 (]: 1 of 4 OK created sql table model dev_sode.stg_daily_climate_parameters_vertical_raw  [[32mOK[0m in 15.73s]
+[0m16:12:32.883384 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m16:12:32.884221 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.stg_daily_climate_parameters
+[0m16:12:32.884702 [info ] [Thread-1 (]: 2 of 4 START sql view model dev_sode.stg_daily_climate_parameters .............. [RUN]
+[0m16:12:32.885205 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw, now model.climate_works_dbt.stg_daily_climate_parameters)
+[0m16:12:32.885429 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.stg_daily_climate_parameters
+[0m16:12:32.887704 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.888994 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters (compile): 16:12:32.885565 => 16:12:32.888842
+[0m16:12:32.889222 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.stg_daily_climate_parameters
+[0m16:12:32.901257 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.902164 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.902414 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: BEGIN
+[0m16:12:32.902657 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:32.907056 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.907423 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.907700 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+
+  
+  create view "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_tmp" as (
+    with source as
+    (
+
+        select
+            record_id ::varchar as record_id,
+            array_slice(reading_date,1,4)::INTEGER as year,
+            array_slice(reading_date, 5,6) ::INTEGER as month,
+            array_slice(reading_date, 7,8) ::INTEGER as day,
+            reading_type,
+            reading_value,
+            measurement_flag,
+            quality_flag,
+            source_flag,
+            obs_recorded_at
+
+    from "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw"
+
+),
+
+final as
+(
+
+  select
+        record_id,
+        make_date(year,month,day)::timestamp as reading_date,
+        reading_type,
+        reading_value,
+        measurement_flag,
+        quality_flag,
+        source_flag,
+        obs_recorded_at
+
+     from source WHERE reading_type in ('PRCP','SNOW','SNWD','TMAX','TMIN') and quality_flag is null and measurement_flag != 'T'
+)
+
+select *
+from final
+  );
+
+[0m16:12:32.908477 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.912125 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.912431 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+alter view "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_tmp" rename to "stg_daily_climate_parameters"
+[0m16:12:32.912836 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.913822 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: COMMIT
+[0m16:12:32.914053 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.914249 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: COMMIT
+[0m16:12:32.915245 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.917019 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m16:12:32.917265 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+drop view if exists "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_backup" cascade
+[0m16:12:32.917598 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:32.918455 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters (execute): 16:12:32.889354 => 16:12:32.918329
+[0m16:12:32.918677 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: Close
+[0m16:12:32.991749 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125a3c210>]}
+[0m16:12:32.992242 [info ] [Thread-1 (]: 2 of 4 OK created sql view model dev_sode.stg_daily_climate_parameters ......... [[32mOK[0m in 0.11s]
+[0m16:12:32.992607 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.stg_daily_climate_parameters
+[0m16:12:32.993165 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m16:12:32.993567 [info ] [Thread-1 (]: 3 of 4 START sql view model dev_sode.int_daily_climate_params_pivoted .......... [RUN]
+[0m16:12:32.994005 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.stg_daily_climate_parameters, now model.climate_works_dbt.int_daily_climate_params_pivoted)
+[0m16:12:32.994249 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m16:12:32.996383 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:32.997557 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.int_daily_climate_params_pivoted (compile): 16:12:32.994383 => 16:12:32.997419
+[0m16:12:32.997782 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m16:12:33.000304 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.001158 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.001484 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: BEGIN
+[0m16:12:33.001717 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:33.005907 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.006238 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.006505 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+
+  
+  create view "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_tmp" as (
+    
+with source as (
+
+    SELECT
+      record_id,
+      reading_date,
+      reading_type,
+      reading_value,
+      source_flag,
+      measurement_flag
+
+
+    from "dev_database"."dev_sode"."stg_daily_climate_parameters"
+),
+
+pivoted as (
+  select 
+    *
+
+    from (
+      PIVOT source on reading_type IN ('PRCP','SNOW','SNWD','TMAX','TMIN') using first(reading_value) group by reading_date, source_flag, measurement_flag
+    )
+)
+
+
+
+select 
+    
+    reading_date,
+    source_flag,
+    measurement_flag,
+    PRCP/10 ::DECIMAL as precipitation_mm,
+    TMAX/10 ::DECIMAL as daily_max_temperature_celsius,
+    TMIN/10 ::DECIMAL as daily_min_temperature_celsius,
+    SNWD    ::DECIMAL as snow_depth_mm,
+    SNOW    ::DECIMAL as snow_fall_mm
+
+    
+     from pivoted
+  );
+
+[0m16:12:33.008965 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.011248 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.011584 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+alter view "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_tmp" rename to "int_daily_climate_params_pivoted"
+[0m16:12:33.011962 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.012940 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: COMMIT
+[0m16:12:33.013169 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.013385 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: COMMIT
+[0m16:12:33.013885 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.015589 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m16:12:33.015822 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+drop view if exists "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_backup" cascade
+[0m16:12:33.016166 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.017022 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.int_daily_climate_params_pivoted (execute): 16:12:32.997915 => 16:12:33.016891
+[0m16:12:33.017247 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: Close
+[0m16:12:33.089036 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125e357d0>]}
+[0m16:12:33.089546 [info ] [Thread-1 (]: 3 of 4 OK created sql view model dev_sode.int_daily_climate_params_pivoted ..... [[32mOK[0m in 0.10s]
+[0m16:12:33.089903 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m16:12:33.090384 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.fact_daily_climate_parameters
+[0m16:12:33.090692 [info ] [Thread-1 (]: 4 of 4 START sql table model dev_sode.fact_daily_climate_parameters ............ [RUN]
+[0m16:12:33.091128 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.int_daily_climate_params_pivoted, now model.climate_works_dbt.fact_daily_climate_parameters)
+[0m16:12:33.091356 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.fact_daily_climate_parameters
+[0m16:12:33.093319 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.094112 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.fact_daily_climate_parameters (compile): 16:12:33.091489 => 16:12:33.093980
+[0m16:12:33.094333 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.fact_daily_climate_parameters
+[0m16:12:33.096644 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.097121 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.097338 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: BEGIN
+[0m16:12:33.097530 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:33.101921 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.102260 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.102497 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+
+  
+    
+    
+
+    create  table
+      "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_tmp"
+  
+    as (
+      
+
+with source as (
+    select
+    reading_date,
+    source_flag,
+    measurement_flag,
+    precipitation_mm,
+    daily_max_temperature_celsius,
+    daily_min_temperature_celsius,
+    snow_fall_mm,
+    snow_depth_mm
+
+    from "dev_database"."dev_sode"."int_daily_climate_params_pivoted"
+    order by reading_date desc
+)
+
+select * from source
+    );
+  
+  
+[0m16:12:33.508153 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.510262 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.510509 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+alter table "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_tmp" rename to "fact_daily_climate_parameters"
+[0m16:12:33.510873 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.511943 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: COMMIT
+[0m16:12:33.512163 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.512359 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: COMMIT
+[0m16:12:33.513448 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.514885 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m16:12:33.515097 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+drop table if exists "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_backup" cascade
+[0m16:12:33.515368 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m16:12:33.516145 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.fact_daily_climate_parameters (execute): 16:12:33.094463 => 16:12:33.516019
+[0m16:12:33.516362 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: Close
+[0m16:12:33.638120 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '316a4408-a8a5-4a1d-840c-34efc78061c6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125c09910>]}
+[0m16:12:33.638618 [info ] [Thread-1 (]: 4 of 4 OK created sql table model dev_sode.fact_daily_climate_parameters ....... [[32mOK[0m in 0.55s]
+[0m16:12:33.638961 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.fact_daily_climate_parameters
+[0m16:12:33.639952 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:12:33.640176 [debug] [MainThread]: On master: BEGIN
+[0m16:12:33.640355 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:12:33.644180 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m16:12:33.644406 [debug] [MainThread]: On master: COMMIT
+[0m16:12:33.644576 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:12:33.644736 [debug] [MainThread]: On master: COMMIT
+[0m16:12:33.644926 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m16:12:33.645099 [debug] [MainThread]: On master: Close
+[0m16:12:33.648180 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:12:33.648453 [debug] [MainThread]: Connection 'model.climate_works_dbt.fact_daily_climate_parameters' was properly closed.
+[0m16:12:33.648730 [info ] [MainThread]: 
+[0m16:12:33.648965 [info ] [MainThread]: Finished running 2 table models, 2 view models in 0 hours 0 minutes and 16.58 seconds (16.58s).
+[0m16:12:33.649784 [debug] [MainThread]: Command end result
+[0m16:12:33.660105 [info ] [MainThread]: 
+[0m16:12:33.660447 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:12:33.660654 [info ] [MainThread]: 
+[0m16:12:33.660875 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m16:12:33.683256 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 17.667854, "process_user_time": 56.04655, "process_kernel_time": 1.851578, "process_mem_max_rss": "2946826240", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m16:12:33.683890 [debug] [MainThread]: Command `dbt run` succeeded at 16:12:33.683802 after 17.67 seconds
+[0m16:12:33.684185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1046019d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104601890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104559ed0>]}
+[0m16:12:33.684419 [debug] [MainThread]: Flushing usage events
+[0m15:06:04.142076 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10613add0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10613b650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1061a5110>]}
+
+
+============================== 15:06:04.145971 | d876a1a9-a410-4d28-b6d0-34b3d656d20e ==============================
+[0m15:06:04.145971 [info ] [MainThread]: Running with dbt=1.7.8
+[0m15:06:04.146398 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/Users/raajassode/dev/climate_works_dbt/logs', 'fail_fast': 'False', 'profiles_dir': '/Users/raajassode/dev/climate_works_dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select +stg_daily_climate_parameters_vertical_raw+', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m15:06:05.031806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10617b3d0>]}
+[0m15:06:05.109845 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1061390d0>]}
+[0m15:06:05.110664 [info ] [MainThread]: Registered adapter: duckdb=1.7.0
+[0m15:06:05.139427 [debug] [MainThread]: checksum: 67f0013ca5f0bd43af9a0873dd50792fde83ef69de63b71cacd0b4ac656c52e5, vars: {}, profile: , target: , version: 1.7.8
+[0m15:06:05.164958 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m15:06:05.165265 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m15:06:05.165812 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.climate_works_dbt.example
+[0m15:06:05.169402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1061e8c10>]}
+[0m15:06:05.178318 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1065a06d0>]}
+[0m15:06:05.178704 [info ] [MainThread]: Found 5 models, 2 seeds, 2 sources, 0 exposures, 0 metrics, 391 macros, 0 groups, 0 semantic models
+[0m15:06:05.178962 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106514a10>]}
+[0m15:06:05.180170 [info ] [MainThread]: 
+[0m15:06:05.180675 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m15:06:05.181460 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_dev_database'
+[0m15:06:05.188906 [debug] [ThreadPool]: Using duckdb connection "list_dev_database"
+[0m15:06:05.189250 [debug] [ThreadPool]: On list_dev_database: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "list_dev_database"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where catalog_name = '"dev_database"'
+    
+  
+  
+[0m15:06:05.189463 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:06:05.196559 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.197836 [debug] [ThreadPool]: On list_dev_database: Close
+[0m15:06:05.199739 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dev_database, now create_dev_database_dev_sode)
+[0m15:06:05.200206 [debug] [ThreadPool]: Creating schema "database: "dev_database"
+schema: "dev_sode"
+"
+[0m15:06:05.203721 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m15:06:05.204060 [debug] [ThreadPool]: On create_dev_database_dev_sode: BEGIN
+[0m15:06:05.204236 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m15:06:05.207807 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.208043 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m15:06:05.208236 [debug] [ThreadPool]: On create_dev_database_dev_sode: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "create_dev_database_dev_sode"} */
+create schema if not exists "dev_database"."dev_sode"
+[0m15:06:05.208565 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.209155 [debug] [ThreadPool]: On create_dev_database_dev_sode: COMMIT
+[0m15:06:05.209337 [debug] [ThreadPool]: Using duckdb connection "create_dev_database_dev_sode"
+[0m15:06:05.209631 [debug] [ThreadPool]: On create_dev_database_dev_sode: COMMIT
+[0m15:06:05.209973 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.210182 [debug] [ThreadPool]: On create_dev_database_dev_sode: Close
+[0m15:06:05.212480 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_dev_database_dev_sode, now list_dev_database_dev_sode)
+[0m15:06:05.216787 [debug] [ThreadPool]: Using duckdb connection "list_dev_database_dev_sode"
+[0m15:06:05.217207 [debug] [ThreadPool]: On list_dev_database_dev_sode: BEGIN
+[0m15:06:05.217415 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m15:06:05.221804 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.222131 [debug] [ThreadPool]: Using duckdb connection "list_dev_database_dev_sode"
+[0m15:06:05.222367 [debug] [ThreadPool]: On list_dev_database_dev_sode: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "connection_name": "list_dev_database_dev_sode"} */
+select
+      'dev_database' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where table_schema = 'dev_sode'
+    and table_catalog = 'dev_database'
+  
+[0m15:06:05.236772 [debug] [ThreadPool]: SQL status: OK in 0.0 seconds
+[0m15:06:05.240451 [debug] [ThreadPool]: On list_dev_database_dev_sode: ROLLBACK
+[0m15:06:05.241439 [debug] [ThreadPool]: Failed to rollback 'list_dev_database_dev_sode'
+[0m15:06:05.241641 [debug] [ThreadPool]: On list_dev_database_dev_sode: Close
+[0m15:06:05.243831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106375510>]}
+[0m15:06:05.244124 [debug] [MainThread]: Using duckdb connection "master"
+[0m15:06:05.244304 [debug] [MainThread]: On master: BEGIN
+[0m15:06:05.244467 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:06:05.248324 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m15:06:05.248601 [debug] [MainThread]: On master: COMMIT
+[0m15:06:05.248804 [debug] [MainThread]: Using duckdb connection "master"
+[0m15:06:05.248985 [debug] [MainThread]: On master: COMMIT
+[0m15:06:05.249189 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m15:06:05.249363 [debug] [MainThread]: On master: Close
+[0m15:06:05.250747 [info ] [MainThread]: Concurrency: 1 threads (target='cw_dev')
+[0m15:06:05.250992 [info ] [MainThread]: 
+[0m15:06:05.252618 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m15:06:05.252922 [info ] [Thread-1 (]: 1 of 4 START sql table model dev_sode.stg_daily_climate_parameters_vertical_raw  [RUN]
+[0m15:06:05.253341 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dev_database_dev_sode, now model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw)
+[0m15:06:05.253557 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m15:06:05.258448 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:05.259803 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw (compile): 15:06:05.253699 => 15:06:05.259590
+[0m15:06:05.260104 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m15:06:05.280601 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:05.281737 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:05.282034 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: BEGIN
+[0m15:06:05.282255 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:06:05.285845 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:05.286099 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:05.286359 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+
+  
+    
+    
+
+    create  table
+      "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_tmp"
+  
+    as (
+      
+with source as (
+
+    SELECT
+    ID          ::varchar   as record_id,
+    DATE        ::varchar   as reading_date,
+    ELEMENT     ::varchar   as reading_type,
+    DATA_VALUE  ::numeric   as reading_value,
+    M_FLAG      ::varchar   as measurement_flag,
+    Q_FLAG      ::varchar   as quality_flag,
+    S_FLAG      ::varchar   as source_flag,
+    OBS_TIME    ::varchar   as obs_recorded_at
+
+    from "dev_database"."dev_sode"."noaa_ghcn_2022"
+
+
+    UNION ALL
+
+    SELECT
+
+    ID          ::varchar   as record_id,
+    DATE        ::varchar   as reading_date,
+    ELEMENT     ::varchar   as reading_type,
+    DATA_VALUE  ::numeric   as reading_value,
+    M_FLAG      ::varchar   as measurement_flag,
+    Q_FLAG      ::varchar   as quality_flag,
+    S_FLAG      ::varchar   as source_flag,
+    OBS_TIME    ::varchar   as obs_recorded_at
+
+    from "dev_database"."dev_sode"."noaa_ghcn_2023"
+)
+
+select * from source
+    );
+  
+  
+[0m15:06:14.490525 [debug] [Thread-1 (]: SQL status: OK in 9.0 seconds
+[0m15:06:14.501130 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:14.501481 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+alter table "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_tmp" rename to "stg_daily_climate_parameters_vertical_raw"
+[0m15:06:14.502061 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:14.513479 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: COMMIT
+[0m15:06:14.513811 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:14.514034 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: COMMIT
+[0m15:06:24.901340 [debug] [Thread-1 (]: SQL status: OK in 10.0 seconds
+[0m15:06:24.909837 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"
+[0m15:06:24.910207 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw"} */
+drop table if exists "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw__dbt_backup" cascade
+[0m15:06:24.910665 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:24.912689 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw (execute): 15:06:05.260244 => 15:06:24.912424
+[0m15:06:24.913017 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw: Close
+[0m15:06:25.221500 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1064cf310>]}
+[0m15:06:25.222384 [info ] [Thread-1 (]: 1 of 4 OK created sql table model dev_sode.stg_daily_climate_parameters_vertical_raw  [[32mOK[0m in 19.97s]
+[0m15:06:25.222953 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw
+[0m15:06:25.223915 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.stg_daily_climate_parameters
+[0m15:06:25.224653 [info ] [Thread-1 (]: 2 of 4 START sql view model dev_sode.stg_daily_climate_parameters .............. [RUN]
+[0m15:06:25.225175 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.stg_daily_climate_parameters_vertical_raw, now model.climate_works_dbt.stg_daily_climate_parameters)
+[0m15:06:25.225403 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.stg_daily_climate_parameters
+[0m15:06:25.227732 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.228394 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters (compile): 15:06:25.225553 => 15:06:25.228215
+[0m15:06:25.228642 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.stg_daily_climate_parameters
+[0m15:06:25.241309 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.241959 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.242187 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: BEGIN
+[0m15:06:25.242429 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:06:25.246855 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.247124 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.247379 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+
+  
+  create view "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_tmp" as (
+    with source as
+    (
+
+        select
+            record_id ::varchar as record_id,
+            array_slice(reading_date,1,4)::INTEGER as year,
+            array_slice(reading_date, 5,6) ::INTEGER as month,
+            array_slice(reading_date, 7,8) ::INTEGER as day,
+            reading_type,
+            reading_value,
+            measurement_flag,
+            quality_flag,
+            source_flag,
+            obs_recorded_at
+
+    from "dev_database"."dev_sode"."stg_daily_climate_parameters_vertical_raw"
+
+),
+
+final as
+(
+
+  select
+        record_id,
+        make_date(year,month,day)::timestamp as reading_date,
+        reading_type,
+        reading_value,
+        measurement_flag,
+        quality_flag,
+        source_flag,
+        obs_recorded_at
+
+     from source WHERE reading_type in ('PRCP','SNOW','SNWD','TMAX','TMIN') and quality_flag is null and measurement_flag != 'T'
+)
+
+select *
+from final
+  );
+
+[0m15:06:25.248112 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.250256 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.250498 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+alter view "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_tmp" rename to "stg_daily_climate_parameters"
+[0m15:06:25.250825 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.251807 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: COMMIT
+[0m15:06:25.252024 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.252224 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: COMMIT
+[0m15:06:25.252828 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.256203 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.stg_daily_climate_parameters"
+[0m15:06:25.256546 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.stg_daily_climate_parameters"} */
+drop view if exists "dev_database"."dev_sode"."stg_daily_climate_parameters__dbt_backup" cascade
+[0m15:06:25.256924 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.257860 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.stg_daily_climate_parameters (execute): 15:06:25.228788 => 15:06:25.257731
+[0m15:06:25.258095 [debug] [Thread-1 (]: On model.climate_works_dbt.stg_daily_climate_parameters: Close
+[0m15:06:25.332409 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106806410>]}
+[0m15:06:25.332913 [info ] [Thread-1 (]: 2 of 4 OK created sql view model dev_sode.stg_daily_climate_parameters ......... [[32mOK[0m in 0.11s]
+[0m15:06:25.333296 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.stg_daily_climate_parameters
+[0m15:06:25.333948 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m15:06:25.335375 [info ] [Thread-1 (]: 3 of 4 START sql view model dev_sode.int_daily_climate_params_pivoted .......... [RUN]
+[0m15:06:25.335866 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.stg_daily_climate_parameters, now model.climate_works_dbt.int_daily_climate_params_pivoted)
+[0m15:06:25.336258 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m15:06:25.338461 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.342437 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.int_daily_climate_params_pivoted (compile): 15:06:25.336452 => 15:06:25.342246
+[0m15:06:25.342959 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m15:06:25.345520 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.347144 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.347551 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: BEGIN
+[0m15:06:25.347788 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:06:25.351765 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.352031 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.352281 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+
+  
+  create view "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_tmp" as (
+    
+with source as (
+
+    SELECT
+      record_id,
+      reading_date,
+      reading_type,
+      reading_value,
+      source_flag,
+      measurement_flag
+
+
+    from "dev_database"."dev_sode"."stg_daily_climate_parameters"
+),
+
+pivoted as (
+  select 
+    *
+
+    from (
+      PIVOT source on reading_type IN ('PRCP','SNOW','SNWD','TMAX','TMIN') using first(reading_value) group by reading_date, source_flag, measurement_flag
+    )
+)
+
+
+
+select 
+    
+    reading_date,
+    source_flag,
+    measurement_flag,
+    PRCP/10 ::DECIMAL as precipitation_mm,
+    TMAX/10 ::DECIMAL as daily_max_temperature_celsius,
+    TMIN/10 ::DECIMAL as daily_min_temperature_celsius,
+    SNWD    ::DECIMAL as snow_depth_mm,
+    SNOW    ::DECIMAL as snow_fall_mm
+
+    
+     from pivoted
+  );
+
+[0m15:06:25.353623 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.355707 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.355964 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+alter view "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_tmp" rename to "int_daily_climate_params_pivoted"
+[0m15:06:25.356291 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.357401 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: COMMIT
+[0m15:06:25.357712 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.357927 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: COMMIT
+[0m15:06:25.358467 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.360129 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.int_daily_climate_params_pivoted"
+[0m15:06:25.360368 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.int_daily_climate_params_pivoted"} */
+drop view if exists "dev_database"."dev_sode"."int_daily_climate_params_pivoted__dbt_backup" cascade
+[0m15:06:25.360672 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.361559 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.int_daily_climate_params_pivoted (execute): 15:06:25.343115 => 15:06:25.361434
+[0m15:06:25.361781 [debug] [Thread-1 (]: On model.climate_works_dbt.int_daily_climate_params_pivoted: Close
+[0m15:06:25.435803 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106805bd0>]}
+[0m15:06:25.436307 [info ] [Thread-1 (]: 3 of 4 OK created sql view model dev_sode.int_daily_climate_params_pivoted ..... [[32mOK[0m in 0.10s]
+[0m15:06:25.436654 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.int_daily_climate_params_pivoted
+[0m15:06:25.437259 [debug] [Thread-1 (]: Began running node model.climate_works_dbt.fact_daily_climate_parameters
+[0m15:06:25.437713 [info ] [Thread-1 (]: 4 of 4 START sql table model dev_sode.fact_daily_climate_parameters ............ [RUN]
+[0m15:06:25.438206 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.climate_works_dbt.int_daily_climate_params_pivoted, now model.climate_works_dbt.fact_daily_climate_parameters)
+[0m15:06:25.438443 [debug] [Thread-1 (]: Began compiling node model.climate_works_dbt.fact_daily_climate_parameters
+[0m15:06:25.440623 [debug] [Thread-1 (]: Writing injected SQL for node "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.441615 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.fact_daily_climate_parameters (compile): 15:06:25.438597 => 15:06:25.441387
+[0m15:06:25.441870 [debug] [Thread-1 (]: Began executing node model.climate_works_dbt.fact_daily_climate_parameters
+[0m15:06:25.444313 [debug] [Thread-1 (]: Writing runtime sql for node "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.444789 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.445003 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: BEGIN
+[0m15:06:25.445197 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:06:25.449193 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.449461 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.449694 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+
+  
+    
+    
+
+    create  table
+      "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_tmp"
+  
+    as (
+      
+
+with source as (
+    select
+    reading_date,
+    source_flag,
+    measurement_flag,
+    precipitation_mm,
+    daily_max_temperature_celsius,
+    daily_min_temperature_celsius,
+    snow_fall_mm,
+    snow_depth_mm
+
+    from "dev_database"."dev_sode"."int_daily_climate_params_pivoted"
+    order by reading_date desc
+)
+
+select * from source
+    );
+  
+  
+[0m15:06:25.918849 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.921270 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.921541 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+alter table "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_tmp" rename to "fact_daily_climate_parameters"
+[0m15:06:25.921926 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.923170 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: COMMIT
+[0m15:06:25.923412 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.923617 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: COMMIT
+[0m15:06:25.924567 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.926097 [debug] [Thread-1 (]: Using duckdb connection "model.climate_works_dbt.fact_daily_climate_parameters"
+[0m15:06:25.926327 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: /* {"app": "dbt", "dbt_version": "1.7.8", "profile_name": "climate_works_dbt", "target_name": "cw_dev", "node_id": "model.climate_works_dbt.fact_daily_climate_parameters"} */
+drop table if exists "dev_database"."dev_sode"."fact_daily_climate_parameters__dbt_backup" cascade
+[0m15:06:25.926608 [debug] [Thread-1 (]: SQL status: OK in 0.0 seconds
+[0m15:06:25.927439 [debug] [Thread-1 (]: Timing info for model.climate_works_dbt.fact_daily_climate_parameters (execute): 15:06:25.441998 => 15:06:25.927311
+[0m15:06:25.927672 [debug] [Thread-1 (]: On model.climate_works_dbt.fact_daily_climate_parameters: Close
+[0m15:06:26.052285 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd876a1a9-a410-4d28-b6d0-34b3d656d20e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106811710>]}
+[0m15:06:26.052806 [info ] [Thread-1 (]: 4 of 4 OK created sql table model dev_sode.fact_daily_climate_parameters ....... [[32mOK[0m in 0.61s]
+[0m15:06:26.053182 [debug] [Thread-1 (]: Finished running node model.climate_works_dbt.fact_daily_climate_parameters
+[0m15:06:26.054426 [debug] [MainThread]: Using duckdb connection "master"
+[0m15:06:26.054802 [debug] [MainThread]: On master: BEGIN
+[0m15:06:26.055016 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m15:06:26.058936 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m15:06:26.059203 [debug] [MainThread]: On master: COMMIT
+[0m15:06:26.059405 [debug] [MainThread]: Using duckdb connection "master"
+[0m15:06:26.059587 [debug] [MainThread]: On master: COMMIT
+[0m15:06:26.059791 [debug] [MainThread]: SQL status: OK in 0.0 seconds
+[0m15:06:26.059968 [debug] [MainThread]: On master: Close
+[0m15:06:26.062176 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:06:26.062442 [debug] [MainThread]: Connection 'model.climate_works_dbt.fact_daily_climate_parameters' was properly closed.
+[0m15:06:26.062730 [info ] [MainThread]: 
+[0m15:06:26.062995 [info ] [MainThread]: Finished running 2 table models, 2 view models in 0 hours 0 minutes and 20.88 seconds (20.88s).
+[0m15:06:26.063612 [debug] [MainThread]: Command end result
+[0m15:06:26.072095 [info ] [MainThread]: 
+[0m15:06:26.072593 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m15:06:26.072821 [info ] [MainThread]: 
+[0m15:06:26.073071 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+[0m15:06:26.096730 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 22.004398, "process_user_time": 56.355347, "process_kernel_time": 2.692156, "process_mem_max_rss": "1875558400", "process_in_blocks": "0", "process_out_blocks": "0"}
+[0m15:06:26.097309 [debug] [MainThread]: Command `dbt run` succeeded at 15:06:26.097222 after 22.01 seconds
+[0m15:06:26.097622 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100812850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x100812790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10069e2d0>]}
+[0m15:06:26.097858 [debug] [MainThread]: Flushing usage events
