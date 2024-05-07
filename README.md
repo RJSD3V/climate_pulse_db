@@ -1,4 +1,9 @@
-# The Duckdb Climatology Project
+<img src="https://github.com/RJSD3V/climate_works_db/assets/20220544/7303deac-dcfd-4ec7-baf8-d48785b6eac3" alt="ClimateWorksLogo" width="200"/>
+
+# ClimateWorks DB - A Climatology Essay written purely in Data. 
+
+## The Climatology Project
+This project is for those who have always wanted to understand Climate better. Its a simplistic use case of building an entire data pipeline and dashbaord based on real Climate data. 
 ![climatology_model](https://github.com/RJSD3V/climate_works_dbt/assets/20220544/1fe77541-9987-40f1-91b4-67a76aab30ba)
 
 ### Using the starter project
