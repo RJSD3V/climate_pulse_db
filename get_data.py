@@ -33,10 +33,11 @@ def get_noaa_file(year):
     except Exception as e:
         print(e)
         print("Couldn't retrieve file, doesn't exist.")
-
+        return None
     finally:
 
         print("Trying to Create the File Locally..")
+        return f"./seeds/raw_data/{year}.csv"
     
 
 
@@ -48,16 +49,34 @@ def load_data_to_db(name, data):
     con.sql(f"CREATE TABLE {name} AS SELECT * FROM data")
 
 
+def push_metadata(data, database_name, table_name):
+
+    conn = duckdb.connect(database=database_name,read_only=False)
+    conn.execute("CREATE SCHEMA IF NOT EXISTS dev_sode;")
+    df = pd.read_csv(data)
+
+    conn.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM df")
+
+    conn.close()
+
+
 
 def get_all_noaa_files(start_year, end_year):
     for y in range(start_year, end_year+1):
         print(f"Getting NOAA Data for year: {y}")
-        get_noaa_file(y)
+        data_file = get_noaa_file(y)
+        push_metadata(data_file, 'dev_database.duckdb',f"ghcn_{y}")
+    print("Data file retrieved, now getting metadata files")
+    push_metadata('states.csv', "dev_database.duckdb", "states")
+    push_metadata('stations.csv',"dev_database.duckdb", "stations")
+    push_metadata('countries.csv', "dev_database.duckdb", "countries")
     print("All File Retrieved!! Check your storage location")
 
+
 if __name__ == '__main__':
-    year = int(sys.argv[1])
-    get_noaa_file(year)
+    start_year = int(sys.argv[1])
+    end_year = int(sys.argv[2])
+    get_all_noaa_files(start_year, end_year)
  
 
 
