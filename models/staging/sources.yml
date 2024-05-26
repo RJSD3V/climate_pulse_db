@@ -1,11 +1,57 @@
 version: 2
 
 sources:
-  - name: noaa_ghcn
+  - name: noaa
     database: dev_database
     schema: dev_sode
     tables:
+      - name: noaa_ghcn_2000
+        identifier: noaa_ghcn_2000
+      - name: noaa_ghcn_2001
+        identifier: noaa_ghcn_2001
+      - name: noaa_ghcn_2002
+        identifier: noaa_ghcn_2002
+      - name: noaa_ghcn_2003
+        identifier: noaa_ghcn_2003
+      - name: noaa_ghcn_2004
+        identifier: noaa_ghcn_2004
+      - name: noaa_ghcn_2005
+        identifier: noaa_ghcn_2005
+      - name: noaa_ghcn_2006
+        identifier: noaa_ghcn_2006
+      - name: noaa_ghcn_2007
+        identifier: noaa_ghcn_2007
+      - name: noaa_ghcn_2008
+        identifier: noaa_ghcn_2009   
+      - name: noaa_ghcn_2009
+        identifier: noaa_ghcn_2009
+      - name: noaa_ghcn_2010
+        identifier: noaa_ghcn_2010
+      - name: noaa_ghcn_2011
+        identifier: noaa_ghcn_2011
+      - name: noaa_ghcn_2012
+        identifier: noaa_ghcn_2012
+      - name: noaa_ghcn_2013
+        identifier: noaa_ghcn_2013
+      - name: noaa_ghcn_2014
+        identifier: noaa_ghcn_2014
+      - name: noaa_ghcn_2015
+        identifier: noaa_ghcn_2015
+      - name: noaa_ghcn_2016
+        identifier: noaa_ghcn_2016
+      - name: noaa_ghcn_2017
+        identifier: noaa_ghcn_2017
+      - name: noaa_ghcn_2018
+        identifier: noaa_ghcn_2018
+      - name: noaa_ghcn_2019
+        identifier: noaa_ghcn_2019
+      - name: noaa_ghcn_2020
+        identifier: noaa_ghcn_2020
+      - name: noaa_ghcn_2021
+        identifier: noaa_ghcn_2021
       - name: noaa_ghcn_2022
         identifier: noaa_ghcn_2022
       - name: noaa_ghcn_2023
         identifier: noaa_ghcn_2023
+      - name: noaa_ghcn_2024
+        identifier: noaa_ghcn_2024         

@@ -50,11 +50,11 @@ def load_data_to_db(name, data):
 
 
 def push_metadata(data, database_name, table_name):
-
+    duckdb.default_connection.execute("SET GLOBAL pandas_analyze_sample=100000")
     conn = duckdb.connect(database=database_name,read_only=False)
     conn.execute("CREATE SCHEMA IF NOT EXISTS dev_sode;")
     df = pd.read_csv(data)
-
+    df.fillna('')
     conn.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM df")
 
     conn.close()

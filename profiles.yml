@@ -1,5 +1,5 @@
 climate_works_dbt:
-  target: cw_dev
+  target: cw_md_prod
   outputs:
     cw_dev:
       type: duckdb
