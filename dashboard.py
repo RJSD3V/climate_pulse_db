@@ -1,17 +1,17 @@
 import streamlit as st
+import os
 import duckdb
 import pandas as pd
 import numpy as np
+from dotenv import load_dotenv
 
-
-
-con = duckdb.connect('dev_database.duckdb')
-con.sql('use dev_database.dev_sode')
+load_dotenv()
+con = duckdb.connect(f'md:?motherduck_token={os.getenv("MOTHERDUCK_TOKEN")}')
+con.sql('use climate_works.prod_sode')
 
 df = con.sql("select * from fact_daily_climate_parameters").df()
 
-st.markdown('# Hello World!')
-st.markdown('## Look at this data: ')
+st.markdown('# ClimateWorksDB')
 
 st.markdown('Creating :red[Dashboard]')
 st.markdown('With dbt models powering this, we can do this all day, keep iterating. Add graphs')  
@@ -19,7 +19,7 @@ st.markdown('Source Flag S --> Global Summary of the Day (NCDC DSI-9618)NOTE: â€
 
 st.markdown('## Daily Min and Max Temperature Scatter Chart')
 st.markdown('> Station Details: Global Summary of the Day (NCDC DSI-9618)')
-st.scatter_chart(df,x='reading_date',y=[ 'daily_max_temperature_celsius','daily_min_temperature_celsius',], color=['#AA0000','#007FFF'])
+st.line_chart(df,x='reading_date',y=[ 'daily_max_temperature_celsius','daily_min_temperature_celsius',], color=['#AA0000','#007FFF'])
 st.markdown("And thats all!")
 
 
