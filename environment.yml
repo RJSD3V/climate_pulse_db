@@ -1,0 +1,7 @@
+dependencies:
+  - pandas
+  - numpy
+  - openpyxl
+  - matplotlib
+  - seaborn
+  - duckdb
