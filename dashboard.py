@@ -11,6 +11,13 @@ con.sql('use climate_works.prod_sode')
 
 df = con.sql("select * from fact_daily_climate_parameters").df()
 
+st.sidebar.header("Filters")
+# category_filter = st.sidebar.multiselect(
+#     'Select Category',  
+#     options=df['CategoryColumn'].unique(),
+#     default=df['CategoryColumn'].unique()
+# )
+
 st.markdown('# ClimateWorksDB')
 
 st.markdown('Creating :red[Dashboard]')
