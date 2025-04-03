@@ -67,7 +67,7 @@ The files we just ingested are vertical tables with climate based readings taken
 
 For starters we would be ingesting basic temperature and precipitation readings, and as this project develops further, there will be more in depth analysis based on climate based use cases and ingesting other location based metadata. 
  
-
+<img src="" alt="ClimateWorksLogo" width="200"/>
 
 
 ### Resources:
