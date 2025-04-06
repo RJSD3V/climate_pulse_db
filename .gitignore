@@ -1,0 +1,6 @@
+/seeds/
+.env
+*.csv
+*.tsv
+*.fwf
+*.txt
