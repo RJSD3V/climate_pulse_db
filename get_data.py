@@ -82,7 +82,7 @@ def push_metadata(data, database_name, table_name):
     conn.execute("SET GLOBAL pandas_analyze_sample=100000")
     conn.execute("CREATE SCHEMA IF NOT EXISTS dev_sode;")
     print(f"Reading CSV file {data}")
-    df = pd.read_csv(data)
+    df = pd.read_csv(data, names=['station_id','date','reading_type','value','m_flag','q_flag','s_flag', 'time'])
     df.fillna('')
     conn.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM df")
 

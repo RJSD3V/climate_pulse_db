@@ -8,6 +8,8 @@ This project is for those who have always wanted to understand Climate better. I
 
 ### Using the starter project
 
+Look at the [documentation](https://github.com/awslabs/open-data-docs/tree/main/docs/noaa/noaa-ghcn) of the data:
+
 To start using this project, one must remember that this project uses duckdb, which is an in process OLAP database, which needs to be installed separately as a python module,and initialised using the following commands: 
 
 ``` pip install duckdb```
