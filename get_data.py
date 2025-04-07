@@ -71,7 +71,7 @@ def load_data_to_db(year):
     con.sql('CREATE SCHEMA IF NOT EXISTS dev_sode;')
     # Note: duckdb.sql connects to the default in-memory database connection
     # you can explicitly mention what db file you want to connect it to, in case you have multiple.
-    df= pd.read_csv(file_path)
+    df= pd.read_csv(file_path,names=['station_id','date','reading_type','value','m_flag','q_flag','s_flag', 'time'])
     print(df.head(5))
     con.sql(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM df")
 
@@ -82,7 +82,7 @@ def push_metadata(data, database_name, table_name):
     conn.execute("SET GLOBAL pandas_analyze_sample=100000")
     conn.execute("CREATE SCHEMA IF NOT EXISTS dev_sode;")
     print(f"Reading CSV file {data}")
-    df = pd.read_csv(data)
+    df = pd.read_csv(data, names=['station_id','date','reading_type','value','m_flag','q_flag','s_flag', 'time'])
     df.fillna('')
     conn.execute(f"CREATE TABLE IF NOT EXISTS {table_name} AS SELECT * FROM df")
 
@@ -98,8 +98,8 @@ def get_all_noaa_files(start_year, end_year):
         if download:
             csv_path=unzip(y)
             print(csv_path)
-        load_data_to_db(y)
-        push_metadata(csv_path, 'dev_database.duckdb',f"ghcn_{y}")
+            load_data_to_db(y)
+        # push_metadata(csv_path, 'dev_database.duckdb',f"ghcn_{y}")
     print("All File Retrieved!! Check your storage location")
 
 
