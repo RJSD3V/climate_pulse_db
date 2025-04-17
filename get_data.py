@@ -23,8 +23,8 @@ def unzip(year):
 
 def get_noaa_file(year):
     bucket_name = 'noaa-ghcn-pds'
-    key_name_prefix = 'csv.gz/'
-    key= key_name_prefix+f"{year}.csv.gz"
+    key_name_prefix = 'csv/by_year/'
+    key= key_name_prefix+f"{year}.csv"
     print(key)
    
     client = boto3.client(
@@ -48,7 +48,7 @@ def get_noaa_file(year):
             # csv_string= body.read().decode('utf-8')
             print("Converting the CSV to a Pandas DataFrame")
             os.makedirs('./seeds/raw/', exist_ok=True)
-            file_path=f'./seeds/raw/{year}.csv.gz'
+            file_path=f'./seeds/raw/{year}.csv'
             with open(file_path, 'wb') as f:
                 f.write(body.read())
             print("Downloaded .gz file successfully")
@@ -96,8 +96,11 @@ def get_all_noaa_files(start_year, end_year):
         download = get_noaa_file(y)
         csv_path=''
         if download:
-            csv_path=unzip(y)
-            print(csv_path)
+            if csv_path.endswith('csv.gz'):
+                csv_path=unzip(y)
+                print(csv_path)
+            if os.path.exists(f'./seeds/raw/{y}.csv'):
+                csv_path = f'./seeds/raw/{y}.csv'
         load_data_to_db(y)
         push_metadata(csv_path, 'dev_database.duckdb',f"ghcn_{y}")
     print("All File Retrieved!! Check your storage location")

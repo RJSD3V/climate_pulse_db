@@ -4,3 +4,6 @@
 *.tsv
 *.fwf
 *.txt
+/venv/
+target/*
+*.duckdb
