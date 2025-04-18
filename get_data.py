@@ -8,6 +8,7 @@ import duckdb
 from dotenv import load_dotenv
 import shutil
 import gzip
+from tqdm import tqdm
 
 load_dotenv()
 def unzip(year):
@@ -44,14 +45,23 @@ def get_noaa_file(year):
             csv_obj = client.get_object(Bucket=bucket_name, Key=key)
             print("Parsing the body from the Object Retreived.")
             body = csv_obj['Body']
+            content_length = csv_obj["ContentLength"]
             print("Decoding the Body in UTF-8")
             # csv_string= body.read().decode('utf-8')
             print("Converting the CSV to a Pandas DataFrame")
             os.makedirs('./seeds/raw/', exist_ok=True)
             file_path=f'./seeds/raw/{year}.csv'
-            with open(file_path, 'wb') as f:
-                f.write(body.read())
-            print("Downloaded .gz file successfully")
+            print("Pushing data to file")
+            chunk_size= 1024*1024
+            with open(file_path, 'wb') as f , tqdm(total=content_length , unit='B', unit_scale=True , desc='Downloading') as pbar:
+                while True:
+                    chunk = body.read(chunk_size)
+                    if not chunk:
+                        break
+                    f.write(chunk)
+                    pbar.update(len(chunk))
+            print("Data Pushed to file successfully")
+
             return True
 
     except Exception as e:
