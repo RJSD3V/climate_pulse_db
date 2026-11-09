@@ -1,0 +1,35 @@
+source_flag,source_name,priority_rank
+Z,Datzilla official additions or replacements,1
+R,NCEI Reference Network Database (Climate Reference Network and Regional Climate Reference Network),2
+W,WBAN/ASOS Summary of the Day from NCDC's Integrated Surface Data (ISD),3
+D,Short time delay US National Weather Service CF6 daily summaries provided by the High Plains Regional Climate Center,4
+d,Short time delay US National Weather Service Daily Summary Message (DSMs) provided by the High Plains Regional Climate Center,5
+1,CF6 (form F6) daily climate summaries from the U.S. National Weather Service,6
+0,U.S. Cooperative Summary of the Day (NCDC DSI-3200),7
+6,CDMP Cooperative Summary of the Day (NCDC DSI-3206),8
+C,Environment Canada,9
+X,U.S. First-Order Summary of the Day (NCDC DSI-3210),10
+K,U.S. Cooperative Summary of the Day data digitized from paper observer forms (from 2011 to present),11
+7,U.S. Cooperative Summary of the Day -- Transmitted via WxCoder3 (NCDC DSI-3207),12
+F,U.S. Fort data,13
+B,U.S. ASOS data for October 2000-December 2005 (NCDC DSI-3211),14
+M,Monthly METAR Extract (additional ASOS data),15
+f,Data provided courtesy of the Fiji Met Service,16
+m,Data from the Mexican National Water Commission (Comision National del Agua -- CONAGUA),17
+r,All-Russian Research Institute of Hydrometeorological Information-World Data Center,18
+E,European Climate Assessment and Dataset (Klein Tank et al. 2002),19
+z,Uzbekistan update,20
+u,Ukraine update,21
+b,Belarus update,22
+s,China Meteorological Administration/National Meteorological Information Center/Climatic Data Center,23
+a,Australian data from the Australian Bureau of Meteorology,24
+G,Official Global Climate Observing System (GCOS) or other government-supplied data,25
+Q,"Data from several African countries that had been ""quarantined"" (withheld from public release until permission was granted)",26
+I,International collection (non U.S. data received through personal contacts),27
+A,U.S. Automated Surface Observing System (ASOS) real-time data (since January 1 2006),28
+N,"Community Collaborative Rain, Hail, and Snow (CoCoRaHS)",29
+T,SNOwpack TELemtry (SNOTEL) data from the USDA Natural Resources Conservation Service,30
+U,Remote Automatic Weather Station (RAWS) data from the Western Regional Climate Center,31
+H,High Plains Regional Climate Center real-time data,32
+2,"Synoptic Summary of the Day (SSOD) ""version 2"", the successor to GSOD (source 'S')",33
+S,Global Summary of the Day (NCDC DSI-9618) - derived from hourly synoptic reports; use with caution,34

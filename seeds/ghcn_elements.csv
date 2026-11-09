@@ -1,0 +1,6 @@
+element,element_name,raw_unit,scale_factor,output_unit
+PRCP,Precipitation,tenths of mm,0.1,mm
+SNOW,Snowfall,mm,1,mm
+SNWD,Snow depth,mm,1,mm
+TMAX,Maximum temperature,tenths of degrees C,0.1,degrees C
+TMIN,Minimum temperature,tenths of degrees C,0.1,degrees C

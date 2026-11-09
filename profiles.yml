@@ -1,16 +1,19 @@
 climate_works_dbt:
-  target: cw_md_prod
+  # Local DuckDB by default; pass --target cw_md_dev / cw_md_prod for MotherDuck.
+  target: cw_dev
   outputs:
     cw_dev:
       type: duckdb
-      database: dev_database
       schema: dev_sode
-      path: './dev_database.duckdb'
+      path: "{{ env_var('CLIMATE_DB', 'dev_database.duckdb') }}"
+      threads: 4
     cw_md_dev:
       type: duckdb
       schema: dev_sode
-      path: "md:climate_works?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+      path: "md:climate_works"   # authenticates with the MOTHERDUCK_TOKEN env var
+      threads: 4
     cw_md_prod:
       type: duckdb
       schema: prod_sode
-      path: "md:climate_works?motherduck_token={{ env_var('MOTHERDUCK_TOKEN') }}"
+      path: "md:climate_works"
+      threads: 4

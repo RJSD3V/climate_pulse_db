@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: fct_daily_station_weather
+    description: >
+      Daily weather per station. Grain: one row per station per day (uniqueness is checked
+      by tests/assert_fct_daily_station_weather_unique.sql). A column is null when that
+      element wasn't reported or failed NOAA quality control that day.
+    columns:
+      - name: station_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_stations')
+                field: station_id
+              config:
+                severity: warn
+      - name: observation_date
+        data_tests: [not_null]
+      - name: tmax_c
+        description: Maximum temperature (°C).
+      - name: tmin_c
+        description: Minimum temperature (°C).
+      - name: tavg_c
+        description: >
+          (tmax_c + tmin_c) / 2, the standard daily mean used in climatology.
+          Null unless both are present.
+      - name: temperature_range_c
+        description: Diurnal temperature range, tmax_c - tmin_c (°C).
+      - name: precipitation_mm
+        description: Precipitation (mm). Trace amounts are recorded as 0.
+      - name: snowfall_mm
+        description: Snowfall (mm).
+      - name: snow_depth_mm
+        description: Snow depth (mm).
+      - name: temperature_source_flag
+        description: Source of the TMAX value (see the ghcn_source_flags seed).
+      - name: precipitation_source_flag
+        description: Source of the PRCP value (see the ghcn_source_flags seed).
+
+  - name: dim_stations
+    description: >
+      Every GHCN-D station with its location, country and state names, and its coverage in
+      the loaded data. Grain: one row per station.
+    columns:
+      - name: station_id
+        data_tests: [unique, not_null]
+      - name: station_name
+      - name: country_code
+        data_tests: [not_null]
+      - name: country_name
+        description: Null if the station's country code is missing from ghcnd-countries.txt.
+      - name: state_code
+      - name: state_name
+      - name: latitude
+      - name: longitude
+      - name: elevation_m
+      - name: is_gsn_station
+      - name: hcn_crn_flag
+      - name: wmo_id
+      - name: first_observation_date
+        description: First day with loaded observations (null if none).
+      - name: last_observation_date
+        description: Last day with loaded observations (null if none).
+      - name: observation_days
+        description: Number of station-days in fct_daily_station_weather.
+        data_tests: [not_null]
+
+  - name: fct_monthly_country_climate
+    description: >
+      Monthly climate summary per country, averaged across all reporting stations.
+      Grain: one row per country per month. The set of reporting stations changes over time,
+      so long-term comparisons should be read with that in mind.
+    columns:
+      - name: country_code
+        data_tests: [not_null]
+      - name: country_name
+      - name: month_start
+        description: First day of the month.
+        data_tests: [not_null]
+      - name: station_count
+        description: Stations with at least one observation in the month.
+      - name: station_days
+        description: Station-days of observations in the month.
+      - name: avg_tmax_c
+        description: Mean daily maximum temperature (°C).
+      - name: avg_tmin_c
+        description: Mean daily minimum temperature (°C).
+      - name: avg_tavg_c
+        description: Mean daily average temperature (°C).
+      - name: max_tmax_c
+        description: Highest daily maximum recorded at any station (°C).
+      - name: min_tmin_c
+        description: Lowest daily minimum recorded at any station (°C).
+      - name: avg_daily_precipitation_mm
+        description: Mean daily precipitation per station (mm/day).
+      - name: temperature_station_days
+        description: Station-days that contribute to avg_tavg_c.
+      - name: precipitation_station_days
+        description: Station-days that contribute to avg_daily_precipitation_mm.

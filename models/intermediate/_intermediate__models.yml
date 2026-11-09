@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_station_daily_weather
+    description: >
+      Quality-controlled observations pivoted to one row per station per day, converted
+      to °C and mm. Values that failed any NOAA quality check (non-null quality flag) are dropped.
+    columns:
+      - name: station_id
+      - name: observation_date
+      - name: tmax_c
+      - name: tmin_c
+      - name: precipitation_mm
+      - name: snowfall_mm
+      - name: snow_depth_mm
+      - name: temperature_source_flag
+      - name: precipitation_source_flag
