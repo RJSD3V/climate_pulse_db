@@ -33,7 +33,7 @@ NOAA public S3 bucket ──► get_data.py ──► DuckDB / MotherDuck (raw) 
 | -------------- | -------------------------------------------------------------------- |
 | Source data    | [NOAA GHCN-D](https://docs.opendata.aws/noaa-ghcn-pds/readme.html), public S3 bucket `noaa-ghcn-pds` |
 | Ingestion      | Python + DuckDB's bulk CSV reader                                    |
-| Warehouse      | [DuckDB](https://duckdb.org/) (local) or [MotherDuck](https://motherduck.com/) (cloud, experimental) |
+| Warehouse      | [DuckDB](https://duckdb.org/) (local) or [MotherDuck](https://motherduck.com/) (cloud, in progress) |
 | Transformation | [dbt](https://docs.getdbt.com/) with the `dbt-duckdb` adapter        |
 | Dashboard      | [Streamlit](https://streamlit.io/) + [Altair](https://altair-viz.github.io/) |
 
@@ -177,11 +177,11 @@ dbt targets (`profiles.yml`):
 | `cw_md_dev`         | MotherDuck `climate_works`   | `dev_sode`  |
 | `cw_md_prod`        | MotherDuck `climate_works`   | `prod_sode` |
 
-### Running on MotherDuck (experimental)
+### Running on MotherDuck (in progress)
 
 > [!NOTE]
-> The cloud setup is on hold. The supported way to run this project is locally with DuckDB, as above.
-> I'm working on a cloud-based solution that's stable and scalable (see [Upcoming changes](#upcoming-changes)).
+> MotherDuck support is a work in progress. The supported way to run this project today is locally with
+> DuckDB, as above. Other options under consideration are listed in [Upcoming changes](#upcoming-changes).
 
 When `--db` is a MotherDuck database, `get_data.py` has MotherDuck read the NOAA files directly from
 the public bucket, so the daily data is never downloaded or uploaded locally.
@@ -225,11 +225,15 @@ climate_pulse_db/
 
 ## Upcoming changes
 
-- **A stable, scalable cloud deployment (in progress).** A trial run on MotherDuck worked end to end:
-  10 years (about 375M raw rows) loaded server-side in minutes and every dbt test passed. But a single
-  full rebuild used up a day's compute allowance, which is too costly for a public dashboard. The
-  project runs locally for now while I work on a cloud-based solution that's stable and scalable.
-- Database to be dockerised with a ClickHouse instance.
+- **A stable, scalable deployment beyond a local DuckDB file (in progress).** Options under consideration:
+
+  | Option | Status | Notes |
+  | ------ | ------ | ----- |
+  | **MotherDuck** (managed cloud DuckDB) | In progress | A trial run worked end to end: 10 years (about 375M raw rows) loaded server-side in minutes and every dbt test passed. But one full rebuild used a day's compute allowance, which is costly for a public dashboard. |
+  | **ClickHouse** in Docker | Considered | Column store built for large analytical scans. Has a dbt adapter (`dbt-clickhouse`). Self-hosted, so there's no compute allowance to run out. |
+  | **PostgreSQL** in Docker | Considered | Simple, widely known, mature dbt adapter (`dbt-postgres`). Row-oriented, so slower on aggregations over hundreds of millions of rows. |
+
+  The Docker options would ship as a `docker compose` setup that runs the database alongside the pipeline and dashboard.
 - Incremental materialization for `fct_daily_station_weather` when many years are loaded.
 - Climate normals (1991–2020 baselines) for anomalies relative to a standard period.
 - More elements (e.g. `TAVG`, `AWND`), and state-level views for the U.S. and Canada.
