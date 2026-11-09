@@ -33,7 +33,7 @@ NOAA public S3 bucket ──► get_data.py ──► DuckDB / MotherDuck (raw) 
 | -------------- | -------------------------------------------------------------------- |
 | Source data    | [NOAA GHCN-D](https://docs.opendata.aws/noaa-ghcn-pds/readme.html), public S3 bucket `noaa-ghcn-pds` |
 | Ingestion      | Python + DuckDB's bulk CSV reader                                    |
-| Warehouse      | [DuckDB](https://duckdb.org/) (local) or [MotherDuck](https://motherduck.com/) (cloud) |
+| Warehouse      | [DuckDB](https://duckdb.org/) (local) or [MotherDuck](https://motherduck.com/) (cloud, experimental) |
 | Transformation | [dbt](https://docs.getdbt.com/) with the `dbt-duckdb` adapter        |
 | Dashboard      | [Streamlit](https://streamlit.io/) + [Altair](https://altair-viz.github.io/) |
 
@@ -177,11 +177,18 @@ dbt targets (`profiles.yml`):
 | `cw_md_dev`         | MotherDuck `climate_works`   | `dev_sode`  |
 | `cw_md_prod`        | MotherDuck `climate_works`   | `prod_sode` |
 
-### Running on MotherDuck
+### Running on MotherDuck (experimental)
+
+> [!NOTE]
+> The cloud setup is on hold. The supported way to run this project is locally with DuckDB, as above.
+> I'm working on a cloud-based solution that's stable and scalable (see [Upcoming changes](#upcoming-changes)).
+
+When `--db` is a MotherDuck database, `get_data.py` has MotherDuck read the NOAA files directly from
+the public bucket, so the daily data is never downloaded or uploaded locally.
 
 ```bash
-export MOTHERDUCK_TOKEN=...                       # or put it in .env (see .env.example)
-python get_data.py 2000 2024 --db md:climate_works
+set -a; source .env; set +a                       # MOTHERDUCK_TOKEN (see .env.example)
+python get_data.py 2025 --db md:climate_works
 dbt build --target cw_md_prod
 CLIMATE_DB=md:climate_works CLIMATE_SCHEMA=prod_sode streamlit run dashboard.py
 ```
@@ -218,6 +225,10 @@ climate_pulse_db/
 
 ## Upcoming changes
 
+- **A stable, scalable cloud deployment (in progress).** A trial run on MotherDuck worked end to end:
+  10 years (about 375M raw rows) loaded server-side in minutes and every dbt test passed. But a single
+  full rebuild used up a day's compute allowance, which is too costly for a public dashboard. The
+  project runs locally for now while I work on a cloud-based solution that's stable and scalable.
 - Database to be dockerised with a ClickHouse instance.
 - Incremental materialization for `fct_daily_station_weather` when many years are loaded.
 - Climate normals (1991–2020 baselines) for anomalies relative to a standard period.

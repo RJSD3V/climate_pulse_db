@@ -115,13 +115,20 @@ def download_file(url, file_path):
 
 
 def get_noaa_file(year):
-    url = f"{NOAA_BASE_URL}/csv.gz/by_year/{year}.csv.gz"
-    return download_file(url, f'{RAW_DIR}/{year}.csv.gz')
+    return download_file(daily_url(year), f'{RAW_DIR}/{year}.csv.gz')
 
 
-def load_data_to_db(con, year):
-    """Load one year into raw.ghcn_daily. Re-running a year replaces it instead of duplicating it."""
-    file_path = f'{RAW_DIR}/{year}.csv.gz'
+def daily_url(year):
+    return f"{NOAA_BASE_URL}/csv.gz/by_year/{year}.csv.gz"
+
+
+def load_data_to_db(con, year, source=None):
+    """Load one year into raw.ghcn_daily. Re-running a year replaces it instead of duplicating it.
+
+    `source` is the local file by default. For MotherDuck it is the NOAA URL: MotherDuck reads
+    the file on its own servers, so the data never passes through this machine.
+    """
+    file_path = source or f'{RAW_DIR}/{year}.csv.gz'
     table_name = f'{RAW_SCHEMA}.ghcn_daily'
     column_defs = ', '.join(f'{c} {t}' for c, t in DAILY_COLUMNS.items())
     # DuckDB reads the .gz directly (no unzip step, no pandas), which is much faster
@@ -178,6 +185,9 @@ def push_metadata(con):
 
 def get_all_noaa_files(start_year, end_year, db_path=DB_PATH, metadata=True):
     print(f"Target database: {db_path}")
+    # MotherDuck reads the NOAA files directly from the bucket, server-side: no local
+    # download and no upload of tens of millions of rows per year.
+    remote = db_path.startswith('md:')
     failed = []
     with duckdb.connect(db_path) as con:
         con.execute(f"CREATE SCHEMA IF NOT EXISTS {RAW_SCHEMA}")
@@ -186,7 +196,9 @@ def get_all_noaa_files(start_year, end_year, db_path=DB_PATH, metadata=True):
             push_metadata(con)
         for y in range(start_year, end_year + 1):
             print(f"Getting NOAA Data for year: {y}")
-            if get_noaa_file(y):
+            if remote:
+                load_data_to_db(con, y, source=daily_url(y))
+            elif get_noaa_file(y):
                 load_data_to_db(con, y)
             else:
                 print(f"Skipping {y}: download failed")
