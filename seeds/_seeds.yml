@@ -1,0 +1,31 @@
+version: 2
+
+seeds:
+  - name: ghcn_source_flags
+    description: >
+      Lookup of GHCN-D source flags (S_FLAG) to the data source they come from, transcribed
+      from the NOAA GHCN-D readme. `priority_rank` is NOAA's priority order when the same
+      value is available from several sources (1 = highest).
+    columns:
+      - name: source_flag
+        description: Single-character source code. Case-sensitive ('A' and 'a' are different sources).
+        data_tests:
+          - unique
+          - not_null
+      - name: source_name
+        description: Name of the data source.
+      - name: priority_rank
+        description: NOAA's source priority (1 = highest).
+
+  - name: ghcn_elements
+    description: The five GHCN-D core elements this project models, with their raw units.
+    columns:
+      - name: element
+        data_tests:
+          - unique
+          - not_null
+      - name: element_name
+      - name: raw_unit
+      - name: scale_factor
+        description: Multiply the raw value by this to get `output_unit`.
+      - name: output_unit

@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_ghcn__daily_observations
+    description: >
+      Typed, renamed daily observations, scoped to the core elements listed in the
+      `core_elements` project var. Grain: one row per station, day and element.
+    columns:
+      - name: station_id
+        data_tests: [not_null]
+      - name: country_code
+        description: FIPS country code (first two characters of the station ID).
+      - name: observation_date
+        data_tests: [not_null]
+      - name: element
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: "{{ var('core_elements') }}"
+      - name: raw_value
+        description: Value in the element's raw unit (tenths of °C / tenths of mm / mm).
+        data_tests: [not_null]
+      - name: measurement_flag
+      - name: quality_flag
+        description: Null when the value passed every NOAA quality check.
+      - name: source_flag
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('ghcn_source_flags')
+                field: source_flag
+              config:
+                severity: warn
+      - name: observation_time
+      - name: source_year
+      - name: loaded_at
+
+  - name: stg_ghcn__stations
+    description: "Typed station metadata. Grain: one row per station."
+    columns:
+      - name: station_id
+        data_tests: [unique, not_null]
+      - name: country_code
+      - name: state_code
+        description: U.S. state or Canadian province code; null elsewhere.
+      - name: station_name
+      - name: latitude
+        data_tests: [not_null]
+      - name: longitude
+        data_tests: [not_null]
+      - name: elevation_m
+        description: Elevation in metres; null when NOAA reports it as unknown (-999.9).
+      - name: is_gsn_station
+        description: True for stations in the GCOS Surface Network.
+      - name: hcn_crn_flag
+        description: HCN = U.S. Historical Climatology Network, CRN = U.S. Climate Reference Network.
+      - name: wmo_id
+        description: World Meteorological Organization station number, when there is one.
+
+  - name: stg_ghcn__countries
+    description: "FIPS country codes and names. Grain: one row per country."
+    columns:
+      - name: country_code
+        data_tests: [unique, not_null]
+      - name: country_name
+        data_tests: [not_null]
+
+  - name: stg_ghcn__states
+    description: "U.S. state and Canadian province codes and names. Grain: one row per state/province."
+    columns:
+      - name: state_code
+        data_tests: [unique, not_null]
+      - name: state_name
+        data_tests: [not_null]

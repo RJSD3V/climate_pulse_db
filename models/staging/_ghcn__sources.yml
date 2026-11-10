@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: ghcn
+    description: >
+      Raw NOAA GHCN-Daily data loaded by `get_data.py` from the public bucket
+      s3://noaa-ghcn-pds (https://docs.opendata.aws/noaa-ghcn-pds/readme.html).
+      Lives in the same database as the models, in the `raw` schema.
+    schema: raw
+    tables:
+      - name: ghcn_daily
+        description: >
+          One row per station, per day, per element (long format), for every year loaded.
+          Loaded from csv.gz/by_year/<year>.csv.gz; re-loading a year replaces it.
+        columns:
+          - name: ID
+            description: 11-character station identifier. The first two characters are the FIPS country code.
+          - name: DATE
+            description: Observation date as YYYYMMDD text.
+          - name: ELEMENT
+            description: Element type, e.g. TMAX, TMIN, PRCP, SNOW, SNWD (plus many others).
+          - name: DATA_VALUE
+            description: Raw value, in the element's raw unit (see the ghcn_elements seed).
+          - name: M_FLAG
+            description: Measurement flag (e.g. T = trace, P = missing presumed zero).
+          - name: Q_FLAG
+            description: Quality flag. Empty means the value passed every NOAA quality check.
+          - name: S_FLAG
+            description: Source flag (see the ghcn_source_flags seed).
+          - name: OBS_TIME
+            description: Observation time, HHMM.
+          - name: source_year
+            description: The yearly file the row was loaded from.
+          - name: loaded_at
+            description: When the row was loaded.
+
+      - name: ghcn_stations
+        description: Station metadata parsed from the fixed-width ghcnd-stations.txt file (all columns text).
+      - name: ghcn_countries
+        description: FIPS country codes and names from ghcnd-countries.txt.
+      - name: ghcn_states
+        description: U.S. state and Canadian province codes and names from ghcnd-states.txt.
